@@ -11,6 +11,10 @@
 <body>
 	<div id="map" style="width: 600px; height: 400px"></div>
 
+	<script src="Tsunami.js" type="text/javascript"></script>
+	<script src="Liquification.js" type="text/javascript"></script>
+	<script src="TMobileMasts.js" type="text/javascript"></script>
+	<script src="ATTMasts.js" type="text/javascript"></script>
 	<script src="SprintMasts.js" type="text/javascript"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
@@ -36,7 +40,7 @@
 			layer.bindPopup(popupContent);
 		}
 
-		L.geoJson([SprintMasts], {
+		L.geoJson([SprintMasts,TMobileMasts,ATTMasts,Liquifaction, Tsunami], {
 
 			style: function (feature) {
 				return feature.properties && feature.properties.style;
@@ -46,7 +50,7 @@
 
 			pointToLayer: function (feature, latlng) {
 				return L.circleMarker(latlng, {
-					radius: 8,
+					radius: 3,
 					fillColor: "#ff7800",
 					color: "#000",
 					weight: 1,
