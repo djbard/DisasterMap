@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Debbie's GeoJSON Example</title>
+	<title>Debbie's Disaster Map</title>
 	<meta charset="utf-8" />
 
 	<meta name="viewport" content="width=device-width*1.5, initial-scale=1.0">
@@ -11,6 +11,9 @@
 <body>
 	<div id="map" style="width: 600px; height: 400px"></div>
 
+	<script src="GrndMotion-10.js" type="text/javascript"></script>
+	<script src="GrndMotion-08.js" type="text/javascript"></script>
+	<script src="GrndMotion-06.js" type="text/javascript"></script>
 	<script src="Hospitals.js" type="text/javascript"></script>
 	<script src="DiveBars.js" type="text/javascript"></script>
 	<script src="Tsunami.js" type="text/javascript"></script>
@@ -33,16 +36,16 @@
 
 
 		function onEachFeature(feature, layer) {
-			var popupContent = "<p>Hurrah for Hacking!</p>";
-
+			var popupContent = "" <!--<p>Hurrah for Hacking!</p>"; -->
+		
 			if (feature.properties && feature.properties.popupContent) {
-				popupContent += feature.properties.popupContent;
-			}
-
-			layer.bindPopup(popupContent);
+		popupContent += feature.properties.popupContent;
 		}
-
-		L.geoJson([Liquifaction, Tsunami,SprintMasts,TMobileMasts,ATTMasts], {
+		
+		layer.bindPopup(popupContent);
+		}
+		   
+		L.geoJson([GrndAccnGT10,GrndAccnGT08,GrndAccnGT06, Liquifaction, Tsunami,SprintMasts,TMobileMasts,ATTMasts], {
 
 			style: function (feature) {
 				return feature.properties && feature.properties.style;
@@ -97,6 +100,48 @@
 					weight: 1,
 					opacity: 1,
 					fillOpacity: 0.6
+				});
+			}
+		}).addTo(map);
+
+
+
+	L.geoJson([GrndAccnGT09], {
+
+			style: function (feature) {
+				return feature.properties && feature.properties.style;
+			},
+
+			onEachFeature: onEachFeature,
+
+			pointToLayer: function (feature, latlng) {
+				return L.circleMarker(latlng, {
+					radius: 40,
+					fillColor: "#ff9966",
+					color: "#ff9966",
+					weight: 0.2,
+					opacity: 1,
+					fillOpacity: 0.2
+				});
+			}
+		}).addTo(map);
+
+	L.geoJson([GrndAccnGT08], {
+
+			style: function (feature) {
+				return feature.properties && feature.properties.style;
+			},
+
+			onEachFeature: onEachFeature,
+
+			pointToLayer: function (feature, latlng) {
+				return L.circleMarker(latlng, {
+					radius: 40,
+					fillColor: "#ff9999",
+					color: "#ff9999",
+					weight: 0.2,
+					opacity: 1,
+					fillOpacity: 0.2
 				});
 			}
 		}).addTo(map);
