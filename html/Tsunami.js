@@ -1,13 +1,13 @@
 var Tsunami = { 
     "type": "Feature", 
     "properties": { 
-        "popupContent": "Liquifaction zone! Run!", 
+        "popupContent": "Tsunami zone! Swim!", 
         "style": { 
             weight: 2, 
-            color: "#888", 
+            color: "#0000FF", 
             opacity: 1, 
-            fillColor: "#B0DE4D", 
-            fillOpacity: 0.8  
+            fillColor: "#0000FF", 
+            fillOpacity: 0.4  
         } 
     }, 
     "geometry": { 
